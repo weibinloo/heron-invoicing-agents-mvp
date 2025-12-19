@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Invoice {{ invoice.invoice_id }}</title>
+  <style>
+    body { font-family: "Georgia", serif; margin: 32px; color: #1f2933; }
+    h1 { font-size: 24px; margin-bottom: 8px; }
+    .meta { margin-bottom: 24px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+    th, td { text-align: left; padding: 8px; border-bottom: 1px solid #ccd5e0; }
+    th { background: #f5f7fa; font-weight: 600; }
+    .totals { margin-top: 16px; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <h1>Invoice</h1>
+  <div class="meta">
+    <div><strong>Invoice ID:</strong> {{ invoice.invoice_id }}</div>
+    <div><strong>Client:</strong> {{ invoice.client_name }} ({{ invoice.client_id }})</div>
+    <div><strong>Billing month:</strong> {{ invoice.billing_month }}</div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Qty</th>
+        <th>Credits/Assignment</th>
+        <th>Line Credits</th>
+        <th>Unit Credit Value</th>
+        <th>Line Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in invoice.line_items %}
+      <tr>
+        <td>{{ item.description }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ "%.2f"|format(item.credits_per_assignment) }}</td>
+        <td>{{ "%.2f"|format(item.line_credits) }}</td>
+        <td>${{ item.unit_credit_value_usd }}</td>
+        <td>${{ item.line_amount_usd }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="totals">
+    Total credits: {{ "%.2f"|format(invoice.total_credits) }}<br>
+    Total amount: ${{ invoice.total_amount_usd }}
+  </div>
+</body>
+</html>

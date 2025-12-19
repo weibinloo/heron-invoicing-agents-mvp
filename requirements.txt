@@ -1,0 +1,7 @@
+langchain
+langchain-community
+langchain-openai
+pydantic
+jinja2
+sqlalchemy
+python-dotenv
