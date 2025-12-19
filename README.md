@@ -3,7 +3,7 @@
 ## Overview
 A minimal multi-agent demo that generates invoices from SQLite assignments. It uses LangChain to read the schema and draft the SQL query, then writes JSON + HTML invoices.
 
-## Setup (copy/paste friendly)
+## Setup
 1) Install dependencies:
 
 ```bash
