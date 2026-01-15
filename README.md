@@ -32,7 +32,7 @@ Optional settings:
 1) Seed demo data (creates `data/invoices.db` with a few completed assignments):
 
 ```bash
-python scripts/seed_demo_data.py
+python scripts/seed_data.py
 ```
 
 2) Generate invoices for a month (this will call the LLM to build the SQL):
