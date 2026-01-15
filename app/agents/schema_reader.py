@@ -1,3 +1,5 @@
+"""Read the SQLite schema for the LLM SQL planner."""
+
 from __future__ import annotations
 
 from dataclasses import dataclass

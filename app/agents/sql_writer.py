@@ -1,10 +1,12 @@
+"""Generate a SQL query from the schema and a month window via LLM."""
+
 from __future__ import annotations
 
 import os
 from dataclasses import dataclass
 
-from langchain.output_parsers import PydanticOutputParser
-from langchain.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import PydanticOutputParser
+from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, ConfigDict, Field
 

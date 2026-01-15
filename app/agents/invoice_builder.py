@@ -1,3 +1,5 @@
+"""Build invoice objects from assignment rows."""
+
 from __future__ import annotations
 
 from dataclasses import dataclass

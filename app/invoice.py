@@ -18,6 +18,7 @@ class RunResult:
 
 
 def _month_bounds(month: str) -> tuple[str, str]:
+    """Return YYYY-MM-01 (inclusive) and next-month YYYY-MM-01 (exclusive)."""
     try:
         start = datetime.strptime(month, "%Y-%m")
     except ValueError as exc:
@@ -32,6 +33,7 @@ def _month_bounds(month: str) -> tuple[str, str]:
 
 
 def _load_template() -> Environment:
+    """Load the Jinja2 environment for invoice HTML rendering."""
     return Environment(
         loader=FileSystemLoader("app/templates"),
         autoescape=select_autoescape(["html"]),
@@ -39,6 +41,7 @@ def _load_template() -> Environment:
 
 
 def run(month: str) -> RunResult:
+    """Generate invoices for a billing month and write JSON/HTML outputs."""
     settings = load_settings()
     month_start, month_end = _month_bounds(month)
 
